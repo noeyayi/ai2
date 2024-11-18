@@ -27,7 +27,7 @@ st.success("모델이 성공적으로 로드되었습니다!")
 
 # 모델의 분류 라벨 출력
 labels = learner.dls.vocab
-#st.write(labels)
+st.write(labels)
 st.title(f"이미지 분류기 (Fastai) - 분류 라벨: {', '.join(labels)}")
 
 # 파일 업로드 컴포넌트 (jpg, png, jpeg, webp, tiff 지원)
