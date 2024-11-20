@@ -49,13 +49,13 @@ def display_right_content(labels):
     # 2nd Row - YouTube Videos based on labels
     for i, label in enumerate(labels[:3]):
         with cols[i]:
-            st.video("https://www.youtube.com/watch?v=3JZ_D3ELwOQ", start_time=0)
+            st.video("https://www.youtube.com/watch?v=0GTyDijQEUQ", start_time=0)
             st.caption(f"유튜브: {label}")
 
     # 3rd Row - Text based on labels
     for i, label in enumerate(labels[:3]):
         with cols[i]:
-            st.write(f"{label} 관련 텍스트 내용입니다.")
+            st.write(f"{label} 관련 텍스트 내용입니다.뀨")
 
 # 모델 로드
 st.write("모델을 로드 중입니다. 잠시만 기다려주세요...")
