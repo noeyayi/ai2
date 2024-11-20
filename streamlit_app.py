@@ -1,4 +1,4 @@
-#이전 수업 시간에 만들었던 이미지 분류 pkl 파일을 바탕으로 한 이미지 분류 모델을 Streamlit에 올리는 예제 코드
+#분류 결과 + 이미지 + 영상 + 텍스트 보여주기
 #파일 이름 streamlit_app.py
 
 import streamlit as st
@@ -20,46 +20,13 @@ def load_model_from_drive(file_id):
     learner = load_learner(output)
     return learner
 
-# 모델 로드
-st.write("모델을 로드 중입니다. 잠시만 기다려주세요...")
-learner = load_model_from_drive(file_id)
-st.success("모델이 성공적으로 로드되었습니다!")
-
-# 모델의 분류 라벨 출력
-labels = learner.dls.vocab
-st.write(labels)
-st.title(f"이미지 분류기 (Fastai) - 분류 라벨: {', '.join(labels)}")
-
-# 파일 업로드 컴포넌트 (jpg, png, jpeg, webp, tiff 지원)
-uploaded_file = st.file_uploader("이미지를 업로드하세요", type=["jpg", "png", "jpeg", "webp", "tiff"])
-
-if uploaded_file is not None:
-    # 업로드된 이미지 보여주기
-    image = Image.open(uploaded_file)
-    st.image(image, caption="업로드된 이미지", use_column_width=True)
-
-    # Fastai에서 예측을 위해 이미지를 처리
-    img = PILImage.create(uploaded_file)
-
-    # 예측 수행
-    prediction, _, probs = learner.predict(img)
-
-    # 결과 출력
+def display_left_content(image, prediction, probs, labels):
+    st.write("### 왼쪽: 기존 출력 결과")
+    if image is not None:
+        st.image(image, caption="업로드된 이미지", use_column_width=True)
     st.write(f"예측된 클래스: {prediction}")
-
-
-    # 클래스별 확률을 HTML과 CSS로 시각화
-    st.markdown("<h3>클래스별 확률:</h3>", unsafe_allow_html=True)
-
-    if prediction == labels[0]:
-        st.write("중냉이 뭐에요~?")
-    elif prediction == labels[1]:
-        st.write("짜장면먹고싶다 꺄릇")
-    elif prediction == labels[2]:
-        st.write("짬뽕꿋!")
-
+    st.markdown("<h4>클래스별 확률:</h4>", unsafe_allow_html=True)
     for label, prob in zip(labels, probs):
-        # HTML 및 CSS로 확률을 시각화
         st.markdown(f"""
             <div style="background-color: #f0f0f0; border-radius: 5px; padding: 5px; margin: 5px 0;">
                 <strong style="color: #333;">{label}:</strong>
@@ -68,7 +35,48 @@ if uploaded_file is not None:
                         {prob:.4f}
                     </div>
                 </div>
-            </div>
         """, unsafe_allow_html=True)
 
+def display_right_content(labels):
+    st.write("### 오른쪽: 동적 분류 결과")
+    cols = st.columns(3)
 
+    # 1st Row - Images based on labels
+    for i, label in enumerate(labels[:3]):
+        with cols[i]:
+            st.image(f"https://via.placeholder.com/150?text={label}", caption=f"이미지: {label}", use_column_width=True)
+
+    # 2nd Row - YouTube Videos based on labels
+    for i, label in enumerate(labels[:3]):
+        with cols[i]:
+            st.video("https://www.youtube.com/watch?v=3JZ_D3ELwOQ", start_time=0)
+            st.caption(f"유튜브: {label}")
+
+    # 3rd Row - Text based on labels
+    for i, label in enumerate(labels[:3]):
+        with cols[i]:
+            st.write(f"{label} 관련 텍스트 내용입니다.")
+
+# 모델 로드
+st.write("모델을 로드 중입니다. 잠시만 기다려주세요...")
+learner = load_model_from_drive(file_id)
+st.success("모델이 성공적으로 로드되었습니다!")
+
+labels = learner.dls.vocab
+
+# 레이아웃 설정
+left_column, right_column = st.columns(2)
+
+# 파일 업로드 컴포넌트 (jpg, png, jpeg, webp, tiff 지원)
+uploaded_file = st.file_uploader("이미지를 업로드하세요", type=["jpg", "png", "jpeg", "webp", "tiff"])
+
+if uploaded_file is not None:
+    image = Image.open(uploaded_file)
+    img = PILImage.create(uploaded_file)
+    prediction, _, probs = learner.predict(img)
+
+    with left_column:
+        display_left_content(image, prediction, probs, labels)
+
+    with right_column:
+        display_right_content(labels)
