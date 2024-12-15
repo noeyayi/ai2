@@ -110,25 +110,6 @@ content_data = {
             "Label 2 더 기분 좋게 만들어줄 활동"
         ]
     },
-    labels[2]: {
-        'images': [
-            "https://via.placeholder.com/300?text=Label3_Image1",
-            "https://via.placeholder.com/300?text=Label3_Image2",
-            "https://via.placeholder.com/300?text=Label3_Image3"
-        ],
-        'videos': [
-            "https://www.youtube.com/watch?v=3JZ_D3ELwOQ",
-            "https://www.youtube.com/watch?v=2Vv-BfVoq4g",
-            "https://www.youtube.com/watch?v=3JZ_D3ELwOQ"
-        ],
-        'texts': [
-            "헬로키티",
-            "Label 3 관련 두 번째 텍스트 내용입니다.",
-            "Label 3 관련 세 번째 텍스트 내용입니다."
-        ]
-    }
-}
-
 # 레이아웃 설정
 left_column, right_column = st.columns([1, 2])  # 왼쪽과 오른쪽의 비율 조정
 
