@@ -110,12 +110,11 @@ content_data = {
             "Label 2 더 기분 좋게 만들어줄 활동"
         ]
     },
-    content_data = {
     labels[2]: {
         'images': [
-            "https://via.placeholder.com/300?text=Label1_Image1",
-            "https://via.placeholder.com/300?text=Label1_Image2",
-            "https://via.placeholder.com/300?text=Label1_Image3"
+            "https://via.placeholder.com/300?text=Label3_Image1",
+            "https://via.placeholder.com/300?text=Label3_Image2",
+            "https://via.placeholder.com/300?text=Label3_Image3"
         ],
         'videos': [
             "https://www.youtube.com/watch?v=3JZ_D3ELwOQ",
@@ -123,12 +122,13 @@ content_data = {
             "https://www.youtube.com/watch?v=3JZ_D3ELwOQ"
         ],
         'texts': [
-            "당신은 현재 불만족 상태 입니다",
-            "Label 1 충분한 휴식을 취하세요.",
-            "Label 1 기분 전환 추천"
+            "헬로키티",
+            "Label 3 관련 두 번째 텍스트 내용입니다.",
+            "Label 3 관련 세 번째 텍스트 내용입니다."
         ]
-    },
-    
+    }
+}
+
 # 레이아웃 설정
 left_column, right_column = st.columns([1, 2])  # 왼쪽과 오른쪽의 비율 조정
 
@@ -151,4 +151,3 @@ if uploaded_file is not None:
             'texts': ["기본 텍스트"] * 3
         })
         display_right_content(prediction, data)
-
