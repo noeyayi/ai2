@@ -6,7 +6,7 @@ from PIL import Image
 import gdown
 
 # Google Drive 파일 ID
-file_id = '1fNQ3k69epF_hjeHg-lg-f9vSpfee0Ra-'
+file_id = '1wdIKNJp9tTpETRKsHqdWzE3i3DvIRtTV'
 
 # Google Drive에서 파일 다운로드 함수
 @st.cache(allow_output_mutation=True)
@@ -78,14 +78,14 @@ st.markdown("""
 content_data = {
     labels[0]: {
         'images': [
-            "https://via.placeholder.com/300?text=Label1_Image1",
-            "https://via.placeholder.com/300?text=Label1_Image2",
-            "https://via.placeholder.com/300?text=Label1_Image3"
+            "https://i.ibb.co/RQRTkZ9/01-2-scaled-e1697969238176.webp",
+            "https://i.ibb.co/7Rxf0Kk/image.png",
+            "https://i.ibb.co/x5gR6qP/1.png"
         ],
         'videos': [
-            "https://www.youtube.com/watch?v=3JZ_D3ELwOQ",
-            "https://www.youtube.com/watch?v=2Vv-BfVoq4g",
-            "https://www.youtube.com/watch?v=3JZ_D3ELwOQ"
+            "https://youtu.be/RtPwBk0pqKE?si=tk3ka5mGdesYMLbt",
+            "https://youtu.be/GBoDm1KilP8?si=nn_EOKclzZ91X1vB",
+            "https://youtu.be/5O6GWCQgGaU?si=MQ3e12zO6WDkODn3"
         ],
         'texts': [
             "당신은 현재 불만족 상태 입니다",
@@ -95,14 +95,14 @@ content_data = {
     },
     labels[1]: {
         'images': [
-            "https://via.placeholder.com/300?text=Label2_Image1",
-            "https://via.placeholder.com/300?text=Label2_Image2",
-            "https://via.placeholder.com/300?text=Label2_Image3"
+            "https://i.ibb.co/xfwdrxf/images.jpg",
+            "https://i.ibb.co/1nxPb6F/images.jpg",
+            "https://i.ibb.co/jy0yLyF/images.jpg"
         ],
         'videos': [
-            "https://www.youtube.com/watch?v=2Vv-BfVoq4g",
-            "https://www.youtube.com/watch?v=3JZ_D3ELwOQ",
-            "https://www.youtube.com/watch?v=2Vv-BfVoq4g"
+            "https://youtu.be/AMd3U4FkC2c?si=g8lQvuKLtjeQCOBf",
+            "https://youtu.be/tSh0l2-_P28?si=GY-Zag5aZPszuP64",
+            "https://youtu.be/K2MfHtHI6Oo?si=4VK1grf28OPb5R2W"
         ],
         'texts': [
             "당신은 현재 만족 상태입니다",
